@@ -44,6 +44,7 @@ export const avSlice = createSlice({
 		item.quantity++;
 	}
     },
+    
     decrementAvQuantity: (state, action) => {
         const item = state[action.payload];
 	if (item && item.quantity > 0) {

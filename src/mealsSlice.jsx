@@ -1,4 +1,4 @@
-// mealsSlice.js
+// mealsSlice.jsx
 import { createSlice } from '@reduxjs/toolkit';
 
 export const mealsSlice = createSlice({

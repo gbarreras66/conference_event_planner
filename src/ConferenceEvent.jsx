@@ -6,15 +6,17 @@ import { incrementQuantity, decrementQuantity } from "./venueSlice";
 import { incrementAvQuantity, decrementAvQuantity } from "./avSlice";
 import { toggleMealSelection } from "./mealsSlice";
 
+
 const ConferenceEvent = () => {
     const [showItems, setShowItems] = useState(false);
     const [numberOfPeople, setNumberOfPeople] = useState(1);
     const venueItems = useSelector((state) => state.venue);
     const avItems = useSelector((state) => state.av);
+    const mealsItems = useSelector((state) => state.meals);
     const dispatch = useDispatch();
     const remainingAuditoriumQuantity = 3 - venueItems.find(item => item.name === "Auditorium Hall (Capacity:200)").quantity;
     const avTotalCost = calculateTotalCost("av");
-    const mealsItems = useSelector((state) => state.meals);
+   
     const mealsTotalCost = calculateTotalCost("meals");
     
     const handleToggleItems = () => {
@@ -34,6 +36,7 @@ const ConferenceEvent = () => {
           dispatch(decrementQuantity(index));
         }
       };
+   
     const handleIncrementAvQuantity = (index) => {
         dispatch(incrementAvQuantity(index));
     };
@@ -136,7 +139,6 @@ const ConferenceEvent = () => {
                 }
             });
         }
-
         return totalCost;
       };
     const venueTotalCost = calculateTotalCost("venue");
@@ -150,8 +152,8 @@ const ConferenceEvent = () => {
       }
 
     const totalCosts = {
-        venue:venueTotalCost,
-        av:avTotalCost,
+        venue: venueTotalCost,
+        av: avTotalCost,
         meals: mealsTotalCost,
     };
 
